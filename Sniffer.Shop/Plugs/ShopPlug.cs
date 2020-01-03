@@ -5,6 +5,7 @@ using Sniffer.Core.Plugs;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Text;
 
 namespace Sniffer.Shop.Plugs
@@ -97,6 +98,11 @@ namespace Sniffer.Shop.Plugs
                     fs.Write(bytes);
                 }
             }
+        }
+
+        public CookieContainer GetCookieContainer()
+        {
+            return null;
         }
     }
 }

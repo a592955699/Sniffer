@@ -2,12 +2,18 @@
 using Sniffer.Core.Models.Sniffer.Pages;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace Sniffer.Core.Plugs
 {
     public interface IPlug
     {
+        /// <summary>
+        /// 获取 Cookie 容器
+        /// </summary>
+        /// <returns></returns>
+        CookieContainer GetCookieContainer();
         /// <summary>
         /// 根页面采集完毕
         /// </summary>

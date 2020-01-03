@@ -5,6 +5,7 @@ using Sniffer.Core.Models.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 namespace Sniffer.Core.Models.Sniffer.Pages
@@ -70,7 +71,12 @@ namespace Sniffer.Core.Models.Sniffer.Pages
                     }
                     try
                     {
-                        _text = HttpHelper.DoGet(Url, Config.Encoding);
+                        CookieContainer cookieContainer = null;
+                        if(Config.Plug!=null)
+                        {
+                            cookieContainer = Config.Plug.GetCookieContainer();
+                        }
+                        _text = HttpHelper.DoGet(Url, Config.Encoding, cookieContainer);
                     }
                     catch(Exception ex)
                     {

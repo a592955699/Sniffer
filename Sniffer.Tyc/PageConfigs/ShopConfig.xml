@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PageConfigs>
+  <PageConfig Root="true" Name="Shop列表页">
+    <!--ConfigBase 开始-->
+    <Url><![CDATA[https://www.tianyancha.com/elibs_financing]]></Url>
+    <Encoding>UTF-8</Encoding>
+    <MethodType>GET</MethodType>
+    <PageType>ListPage</PageType>
+    <SubPageConfig>详细页</SubPageConfig>
+    <Plug>Sniffer.Tyc.Plugs.TianyanchaLoginPlug,Sniffer.Tyc</Plug>
+    <!--ConfigBase 结束-->
+    
+    <!--ListConfig 开始-->
+    <UrlItem>
+      <RegexString><![CDATA[<td><a class="link-click" href="(.*?)" target="_blank">(.*?)</a></td>]]></RegexString>
+      <TitleGroupIndex>2</TitleGroupIndex>
+      <UrlGroupIndex>1</UrlGroupIndex>
+      <UrlFomart></UrlFomart>
+    </UrlItem>
+    <StartIndex>1</StartIndex>
+    <Increment>1</Increment>
+    <MaxPage>1000000</MaxPage>
+    <PageCountSnifferItem>
+      <RegexString><![CDATA[<li><a class="num -end"[\s]*href="https://www.tianyancha.com/elibs_financing/p(\d+)"[\s]*>(.*?)</a></li>]]></RegexString>
+      <ValueGroupIndex>1</ValueGroupIndex>
+    </PageCountSnifferItem>
+    <!--ListConfig 结束-->
+  </PageConfig>
+
+  <PageConfig Name="详细页">
+    <!--ConfigBase 开始-->
+    <Encoding>UTF-8</Encoding>
+    <MethodType>GET</MethodType>
+    <PageType>DetailPage</PageType>
+    <Plug>Sniffer.Tyc.Plugs.TianyanchaLoginPlug,Sniffer.Tyc</Plug>
+    <!--ConfigBase 结束-->
+
+    <!--DetailConfig 开始-->
+    <IsList>false</IsList>
+    <FieldItems>
+      <FieldItem>
+        <Name>公司名称</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<h1 class="name">(.*?)</h1>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>电话</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<span class="label">电话：</span><span>(.*?)</span>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>邮箱</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<span class="label">邮箱：</span><span class="email"[\s]*title="(.*?)">(.*?)</span>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>网址</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<span class="label">网址：</span><i class="safetype tic tic-anquan"></i><a class="company-link"[^>]*(.*?)</a>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>地址</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<script type="text/html" id="company_base_info_address">([^(</script>)]*)</script>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>简介</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<div> <span class="label">简介：</span>([^(</div>)]*)</div>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>公司全称</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>公司全称</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>英文名称</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>英文名称</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>上市曾用名</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>上市曾用名</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>工商登记</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>工商登记</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>注册资本</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>注册资本</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>所属行业</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>所属行业</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>董事长</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>董事长</td><td[^(>)]*><a[^(>)]*>(.*?)</a></td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>董秘</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>董秘</td><td[^(>)]*><a[^(>)]*>(.*?)</a></td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>法定代表人</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>法定代表人</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>总经理</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>总经理</td><td[^(>)]*><a[^(>)]*>(.*?)</a></td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>员工人数</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>员工人数</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>管理人员人数</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>管理人员人数</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>控股股东</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>控股股东</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>实际控制人</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>实际控制人</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>最终控制人</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>最终控制人</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+      <FieldItem>
+        <Name>主营业务</Name>
+        <DefaultValue></DefaultValue>
+        <SnifferItem>
+          <RegexString><![CDATA[<td[^(>)]*>主营业务</td><td[^(>)]*>(.*?)</td>]]></RegexString>
+          <ValueGroupIndex>1</ValueGroupIndex>
+        </SnifferItem>
+      </FieldItem>
+    </FieldItems>
+    <!--DetailConfig 结束-->
+  </PageConfig>
+</PageConfigs>

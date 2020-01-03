@@ -36,52 +36,6 @@ namespace Sniffer.Core.Models.Configs
         /// 子页配置
         /// </summary>
         public ConfigBase SubConfig { get; set; }
-
-        //public ConfigBase Clone()
-        //{
-        //    if (PageType== PageType.DetailPage)
-        //    {
-        //        var config = new DetailConfig();
-        //        //BaseConfig 属性
-        //        config.MethodType = MethodType;
-        //        config.PageType = PageType;
-        //        config.SubConfig = SubConfig;
-        //        config.Url = Url;
-        //        config.Encoding = Encoding;
-
-        //        //DetailConfig属性
-        //        DetailConfig detailConfig = (DetailConfig)this;
-        //        config.FieldItems = detailConfig.FieldItems;
-        //        config.IsList = detailConfig.IsList;
-
-        //        //ListConfig属性
-        //        config.UrlItem = detailConfig.UrlItem;
-        //        config.Increment = detailConfig.Increment;
-        //        config.StartIndex = detailConfig.StartIndex;
-        //        config.MaxPage = detailConfig.MaxPage;
-        //        config.PageCountSnifferItem = detailConfig.PageCountSnifferItem;
-        //        return config;
-        //    }
-        //    else
-        //    {
-        //        var config = new ListConfig();
-        //        //BaseConfig 属性
-        //        config.MethodType = MethodType;
-        //        config.PageType = PageType;
-        //        config.SubConfig = SubConfig;
-        //        config.Url = Url;
-        //        config.Encoding = Encoding;
-
-        //        //ListConfig属性
-        //        ListConfig detailConfig = (ListConfig)this;           
-        //        config.UrlItem = detailConfig.UrlItem;
-        //        config.Increment = detailConfig.Increment;
-        //        config.StartIndex = detailConfig.StartIndex;
-        //        config.MaxPage = detailConfig.MaxPage;
-        //        config.PageCountSnifferItem = detailConfig.PageCountSnifferItem;
-        //        return config;
-        //    }
-        //}
         public IPlug Plug { get; set; }
     }
 }
