@@ -73,7 +73,7 @@ void OnPageDoneEventHandler(PageBase page);
     <MethodType>GET</MethodType>
     <PageType>ListPage</PageType>
     <SubPageConfig>Shop详细页</SubPageConfig>
-    <Plug>Sniffer.Shop.Plugs.ShopPlug,Sniffer.Shop</Plug>
+    <<Plug>Sniffer.Shop.Plugs.ShopPlug,Sniffer.Shop<</Plug>
     <!--ConfigBase 结束-->
     
     <!--ListConfig 开始-->
