@@ -3,6 +3,7 @@ using Sniffer.Core.Enums;
 using Sniffer.Core.Models.Configs;
 using Sniffer.Core.Models.Pages;
 using Sniffer.Core.Models.Sniffer;
+using Sniffer.Login.Baidu;
 using Sniffer.Shop.Plugs;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,9 @@ namespace Sniffer.Shop
         static int pageCount = 1;
         static void Main(string[] args)
         {
+
+            BaiduTest.Test(@"F:\files\test.png");
+
             Console.WriteLine("Hello World!");
 
             //注册编码（放在将要指定编码，进行文件解析前）

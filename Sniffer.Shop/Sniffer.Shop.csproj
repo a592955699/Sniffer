@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sniffer.Core\Sniffer.Core.csproj" />
+    <ProjectReference Include="..\Sniffer.Login\Sniffer.Login.csproj" />
   </ItemGroup>
 
   <ItemGroup>
