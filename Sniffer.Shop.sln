@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sniffer.Shop", "Sniffer.Sho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sniffer.Core", "Sniffer.Core\Sniffer.Core.csproj", "{B9481EA0-6BC1-4A43-AB3D-3C679FDA7281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sniffer.Tyc", "Sniffer.Tyc\Sniffer.Tyc.csproj", "{C174D6C3-862E-4269-B193-DCB232C4ACC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sniffer.Tyc", "Sniffer.Tyc\Sniffer.Tyc.csproj", "{C174D6C3-862E-4269-B193-DCB232C4ACC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sniffer.Login", "Sniffer.Login\Sniffer.Login.csproj", "{E8B67EC2-DC60-4E4A-87A6-BD653E3376E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sniffer.Login", "Sniffer.Login\Sniffer.Login.csproj", "{E8B67EC2-DC60-4E4A-87A6-BD653E3376E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaiduApi.Core", "BaiduApi.Core\BaiduApi.Core.csproj", "{956494F1-2F0A-45B7-A78F-B088206B76E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E8B67EC2-DC60-4E4A-87A6-BD653E3376E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8B67EC2-DC60-4E4A-87A6-BD653E3376E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8B67EC2-DC60-4E4A-87A6-BD653E3376E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{956494F1-2F0A-45B7-A78F-B088206B76E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{956494F1-2F0A-45B7-A78F-B088206B76E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{956494F1-2F0A-45B7-A78F-B088206B76E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{956494F1-2F0A-45B7-A78F-B088206B76E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

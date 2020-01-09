@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sniffer.Login.Baidu
+namespace BaiduApi.Core.TextOrc.Model
 {
     [Serializable]
     public class BaiduResult

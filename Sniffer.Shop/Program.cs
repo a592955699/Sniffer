@@ -1,10 +1,10 @@
-﻿using Sniffer.Core;
+﻿using BaiduApi.Core.ImageOrc;
+using BaiduApi.Core.TextOrc;
+using Sniffer.Core;
 using Sniffer.Core.Enums;
 using Sniffer.Core.Models.Configs;
 using Sniffer.Core.Models.Pages;
 using Sniffer.Core.Models.Sniffer;
-using Sniffer.Login.Baidu;
-using Sniffer.Shop.Plugs;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,8 +19,10 @@ namespace Sniffer.Shop
         static int pageCount = 1;
         static void Main(string[] args)
         {
-
-            BaiduTest.Test(@"F:\files\test.png");
+            //BaiduImageOrcTest baiduImageOrcTest = new BaiduImageOrcTest();
+            //BaiduTextOrcTest baiduTextOrcTest = new BaiduTextOrcTest();
+            //baiduImageOrcTest.Test();
+            //baiduTextOrcTest.Test();
 
             Console.WriteLine("Hello World!");
 
