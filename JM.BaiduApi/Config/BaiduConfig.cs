@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BaiduApi.Core.Config
+namespace JM.BaiduApi.Config
 {
     public class BaiduConfig
     {

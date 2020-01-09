@@ -1,10 +1,10 @@
 ﻿using Baidu.Aip.Ocr;
-using BaiduApi.Core.Config;
+using JM.BaiduApi.Config;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace BaiduApi.Core.TextOrc
+namespace JM.BaiduApi.TextOrc
 {
     public class BaiduTextOrcTest
     {
@@ -18,7 +18,7 @@ namespace BaiduApi.Core.TextOrc
                 SecretKey = "cZc6TeGQL2eGgpkpgKtmacbQC1WUtLOZ"
             };
 
-            string filePath = @"f:\files\1.png";
+            string filePath = @"f:\files\verificationCode_keyword.png";
             var client = new Ocr(baiduConfig.ApiKey, baiduConfig.SecretKey);
             client.Timeout = 60000;
             var image = File.ReadAllBytes(filePath);

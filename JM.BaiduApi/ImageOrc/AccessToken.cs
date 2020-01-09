@@ -1,19 +1,21 @@
-﻿using BaiduApi.Core.Config;
+﻿using JM.BaiduApi.Config;
+using JM.BaiduApi.ImageOrc.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 
-namespace BaiduApi.Core.ImageOrc
+namespace JM.BaiduApi.ImageOrc
 {
     public static class AccessToken
     {
         /// <summary>
-        /// 
+        /// 获取 baidu api token
         /// </summary>
         /// <param name="config">百度云中开通对应服务应用的配置</param>
         /// <returns></returns>
-        public static String getAccessToken(BaiduConfig config)
+        public static AccessTokenResult getAccessToken(BaiduConfig config)
         {
             String authHost = "https://aip.baidubce.com/oauth/2.0/token";
             HttpClient client = new HttpClient();
@@ -24,8 +26,7 @@ namespace BaiduApi.Core.ImageOrc
 
             HttpResponseMessage response = client.PostAsync(authHost, new FormUrlEncodedContent(paraList)).Result;
             String result = response.Content.ReadAsStringAsync().Result;
-            Console.WriteLine(result);
-            return result;
+            return JsonConvert.DeserializeObject<AccessTokenResult>(result);
         }
     }
 }

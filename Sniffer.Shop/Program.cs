@@ -1,5 +1,5 @@
-﻿using BaiduApi.Core.ImageOrc;
-using BaiduApi.Core.TextOrc;
+﻿using JM.BaiduApi.ImageOrc;
+using JM.BaiduApi.TextOrc;
 using Sniffer.Core;
 using Sniffer.Core.Enums;
 using Sniffer.Core.Models.Configs;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BaiduApi.Core.TextOrc.Model
+namespace JM.BaiduApi.TextOrc.Model
 {
     [Serializable]
     public class BaiduResult

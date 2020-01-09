@@ -5,5 +5,9 @@
   </PropertyGroup>
 <ItemGroup>
     <PackageReference Include="Baidu.AI" Version="3.6.14" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
   </ItemGroup>
+<ItemGroup>
+  <ProjectReference Include="..\JM.Common\JM.Common.csproj" />
+</ItemGroup>
 </Project>

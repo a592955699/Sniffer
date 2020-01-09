@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BaiduApi.Core.ImageOrc.Model
+namespace JM.BaiduApi.ImageOrc.Model
 {
     /// <summary>
     /// 百度图像识别 AccessToken 返回结果model

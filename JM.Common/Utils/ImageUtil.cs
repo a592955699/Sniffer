@@ -5,10 +5,102 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Sniffer.Login.Utils
+namespace JM.Common.Utils
 {
-    public class BitmapUtil
+    public class ImageUtil
     {
+        #region 图片截取
+        /// <summary>
+        /// 从图片中截取一部分图片
+        /// </summary>
+        /// <param name="fromImagePath">来源图片地址</param>        
+        /// <param name="nX">从偏移X坐标位置开始截取</param>
+        /// <param name="nY">从偏移Y坐标位置开始截取</param>
+        /// <param name="toImagePath">保存图片地址</param>
+        /// <param name="width">保存图片的宽度</param>
+        /// <param name="height">保存图片的高度</param>
+        /// <returns></returns>
+        public static void CaptureImage(string fromImagePath, int nX, int nY, string toImagePath, int width, int height)
+        {
+            //原图片文件
+            Image fromImage = Image.FromFile(fromImagePath);
+            //创建新图位图
+            Bitmap bitmap = new Bitmap(width, height);
+            //创建作图区域
+            Graphics graphic = Graphics.FromImage(bitmap);
+            //截取原图相应区域写入作图区
+            graphic.DrawImage(fromImage, 0, 0, new Rectangle(nX, nY, width, height), GraphicsUnit.Pixel);
+            //从作图区生成新图
+            Image saveImage = Image.FromHbitmap(bitmap.GetHbitmap());
+            //保存图片
+            saveImage.Save(toImagePath, ImageFormat.Png);
+            //释放资源   
+            saveImage.Dispose();
+            graphic.Dispose();
+            bitmap.Dispose();
+        }
+
+        /// <summary>
+        /// 从图片中截取一部分图片
+        /// </summary>
+        /// <param name="fromImagePath">来源图片地址</param>        
+        /// <param name="nX">从偏移X坐标位置开始截取</param>
+        /// <param name="nY">从偏移Y坐标位置开始截取</param>
+        /// <param name="width">截取图片的宽度</param>
+        /// <param name="height">截取图片的高度</param>
+        /// <returns></returns>
+        public static Image CaptureImage(Image fromImage, int offsetX, int offsetY, int width, int height)
+        {
+            //创建新图位图
+            Bitmap bitmap = new Bitmap(width, height);
+            //创建作图区域
+            Graphics graphic = Graphics.FromImage(bitmap);
+            //截取原图相应区域写入作图区
+            graphic.DrawImage(fromImage, 0, 0, new Rectangle(offsetX, offsetY, width, height), GraphicsUnit.Pixel);
+            //从作图区生成新图
+            Image saveImage = Image.FromHbitmap(bitmap.GetHbitmap());
+            //释放资源   
+            //saveImage.Dispose();
+            graphic.Dispose();
+            bitmap.Dispose();
+            return saveImage;
+        }
+
+        /// <summary>
+        /// 截取图片区域，返回所截取的图片
+        /// </summary>
+        /// <param name="SrcImage"></param>
+        /// <param name="pos"></param>
+        /// <param name="cutWidth"></param>
+        /// <param name="cutHeight"></param>
+        /// <returns></returns>
+        public static Image CutImage(Image SrcImage, int nX, int nY, int cutWidth, int cutHeight)
+        {
+            Image cutedImage = null;
+            //先初始化一个位图对象，来存储截取后的图像
+            Bitmap bmpDest = new Bitmap(cutWidth, cutHeight, PixelFormat.Format32bppRgb);
+            Graphics g = Graphics.FromImage(bmpDest);
+            //矩形定义,将要在被截取的图像上要截取的图像区域的左顶点位置和截取的大小
+            Rectangle rectSource = new Rectangle(nX, nY, cutWidth, cutHeight);
+            //矩形定义,将要把 截取的图像区域 绘制到初始化的位图的位置和大小
+            //rectDest说明，将把截取的区域，从位图左顶点开始绘制，绘制截取的区域原来大小
+            Rectangle rectDest = new Rectangle(0, 0, cutWidth, cutHeight);
+            //第一个参数就是加载你要截取的图像对象，第二个和第三个参数及如上所说定义截取和绘制图像过程中的相关属性，第四个属性定义了属性值所使用的度量单位
+            g.DrawImage(SrcImage, rectDest, rectSource, GraphicsUnit.Pixel);
+            PixelProcess(bmpDest);
+            //在GUI上显示被截取的图像
+            cutedImage = (Image)bmpDest;
+            g.Dispose();
+            return cutedImage;
+        }
+        //图片透像素
+        public static void PixelProcess(Bitmap bmp)
+        {
+            Color colorTransparent = bmp.GetPixel(0, 0);
+            bmp.MakeTransparent(colorTransparent);
+        } 
+        #endregion
+
         #region 灰度处理
         /// <summary>
         /// 8位灰度图像处理
@@ -19,7 +111,7 @@ namespace Sniffer.Login.Utils
         {
             using (var image = Bitmap.FromFile(sourcePath) as Bitmap)
             {
-                using (var bimap1 = BitmapUtil.RgbToGrayScale(image))
+                using (var bimap1 = RgbToGrayScale(image))
                 {
                     bimap1.Save(targetPath);
                 }

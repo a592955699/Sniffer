@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BaiduApi.Core\BaiduApi.Core.csproj" />
+    <ProjectReference Include="..\JM.BaiduApi\JM.BaiduApi.csproj" />
     <ProjectReference Include="..\Sniffer.Core\Sniffer.Core.csproj" />
     <ProjectReference Include="..\Sniffer.Login\Sniffer.Login.csproj" />
   </ItemGroup>
