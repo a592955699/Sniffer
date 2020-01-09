@@ -28,7 +28,8 @@ namespace Sniffer.Tyc.Plugs
                 {
                     Directory.CreateDirectory(rootPath);
                 }
-                string fileName = $"{rootPath}{HttpUtility.UrlEncode(page.Title.Trim())}.json";
+                //string fileName = $"{rootPath}{HttpUtility.UrlEncode(page.Title.Trim())}.json";
+                string fileName = $"{rootPath}{page.Id}.json";
                 using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
                 {
                     using (StreamWriter sw = new StreamWriter(fs))

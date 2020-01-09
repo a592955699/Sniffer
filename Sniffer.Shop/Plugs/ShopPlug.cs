@@ -2,6 +2,7 @@
 using Sniffer.Core.Models.Pages;
 using Sniffer.Core.Models.Sniffer.Pages;
 using Sniffer.Core.Plugs;
+using Sniffer.Shop.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,16 +14,15 @@ namespace Sniffer.Shop.Plugs
     public class ShopPlug : IPlug
     {
         ChromeDriver driver = null;
-        public String RootPath { get; set; } = "F:\\files";
-        private String filePathFomart = "{0}\\Product.txt";
-
+        ShopConfig ShopConfig { get; set; }
+        string fileName = "Product.txt";
         public ShopPlug()
         {
-
+            ShopConfig = ShopConfig.LoadConfig();
         }
         public void OnDetailPageDoneEventHandler(DetailPage page)
         {
-            String filePath = String.Format(filePathFomart, RootPath);
+            String filePath = Path.Combine(ShopConfig.SavePath, fileName);
             String key, value;
             page.Data.TryGetValue("店铺Id", out key);
             page.Data.TryGetValue("产品Id", out value);
@@ -48,7 +48,7 @@ namespace Sniffer.Shop.Plugs
 
         public void OnRootPageDoneEventHandler(PageBase page)
         {
-            String filePath = String.Format(filePathFomart, RootPath);
+            String filePath = Path.Combine(ShopConfig.SavePath, fileName);
             List<string> urls = ReadFile(filePath);
 
             if (driver == null)
@@ -57,7 +57,7 @@ namespace Sniffer.Shop.Plugs
                 driver = new ChromeDriver(driverDiectory);
             }
 
-            DownLoadZip downLoadZip = new DownLoadZip(driver, RootPath);
+            DownLoadZip downLoadZip = new DownLoadZip(driver);
             downLoadZip.Execute(urls);
             driver.Close();
             driver.Dispose();

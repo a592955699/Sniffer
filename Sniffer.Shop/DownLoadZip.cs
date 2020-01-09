@@ -13,14 +13,13 @@ namespace Sniffer.Shop
     public class DownLoadZip
     {
         ChromeDriver driver = null;
-        String zipFilePath = null;
         CookieContainer cookieContainer = new CookieContainer();
-        String userName = "186*********";
-        String passWord = "a*********";
-        public DownLoadZip(ChromeDriver chromeDriver, String _zipFilePath)
+        ShopConfig ShopConfig { get; set; }
+       
+        public DownLoadZip(ChromeDriver chromeDriver)
         {
             driver = chromeDriver;
-            zipFilePath = _zipFilePath;
+            ShopConfig = ShopConfig.LoadConfig();
         }
         public void Execute(List<String> urls)
         {
@@ -35,7 +34,7 @@ namespace Sniffer.Shop
                     {
                         Console.WriteLine($"文件准备下载 {urlModel.data.url}");
                         //下载 zip 包
-                        HttpHelper.DownloadFile(urlModel.data.url, zipFilePath, true);
+                        HttpHelper.DownloadFile(urlModel.data.url, ShopConfig.SavePath, true);
                         Console.WriteLine($"文件下载完毕 {urlModel.data.url}");
                     }
                     else
@@ -58,8 +57,8 @@ namespace Sniffer.Shop
             try
             {
                 Console.WriteLine("模拟登录提交");
-                driver.FindElements(By.Name("username"))[1].SendKeys(userName);
-                driver.FindElements(By.Name("password"))[2].SendKeys(passWord);
+                driver.FindElements(By.Name("username"))[1].SendKeys(ShopConfig.Account);
+                driver.FindElements(By.Name("password"))[2].SendKeys(ShopConfig.PassWord);
                 driver.FindElementByClassName("login-btn").Click();
                 Thread.Sleep(5000);
                 foreach (var item in driver.Manage().Cookies.AllCookies)

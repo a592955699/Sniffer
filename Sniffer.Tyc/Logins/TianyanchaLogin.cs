@@ -46,7 +46,7 @@ namespace Sniffer.Tyc.Logins
 
         protected override void Input()
         {
-            RemoteWebDriver.ExecuteScript("$('.contactphone').val('******');$('.contactword').val('******')");
+            RemoteWebDriver.ExecuteScript("$('.contactphone').val('18620800678');$('.contactword').val('gduccc123')");
             Thread.Sleep(500);
         }
 
