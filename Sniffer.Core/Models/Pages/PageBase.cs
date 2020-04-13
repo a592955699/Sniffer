@@ -120,9 +120,9 @@ namespace Sniffer.Core.Models.Sniffer.Pages
                 if (SubPages.All(x => x.Done && x.SnifferState == SnifferState.Complate))
                 {
                     //触发顶级页采集完毕事件
-                    snifferManager?.OnRootPageDoneEventHandler(this);
+                    snifferManager?.OnRootPageDoneEventHandler(this, snifferManager.Context);
                     if (this.Config.Plug != null)
-                        this.Config.Plug.OnRootPageDoneEventHandler(this);
+                        this.Config.Plug.OnRootPageDoneEventHandler(this, snifferManager.Context);
                 }
             }
             else
@@ -133,16 +133,16 @@ namespace Sniffer.Core.Models.Sniffer.Pages
                     if (Config.PageType == PageType.DetailPage)
                     {
                         //当前详细页以及详细页内容采集完毕
-                        snifferManager?.OnDetailPageDoneEventHandler(this as DetailPage);
+                        snifferManager?.OnDetailPageDoneEventHandler(this as DetailPage, snifferManager.Context);
                         if (this.Config.Plug != null)
-                            this.Config.Plug.OnDetailPageDoneEventHandler(this as DetailPage);
+                            this.Config.Plug.OnDetailPageDoneEventHandler(this as DetailPage, snifferManager.Context);
                     }
                     else
                     {
                         //列表页以及所有子页采集完毕
-                        snifferManager?.OnListPageDoneEventHandler(this as ListPage);
+                        snifferManager?.OnListPageDoneEventHandler(this as ListPage, snifferManager.Context);
                         if (this.Config.Plug != null)
-                            this.Config.Plug.OnListPageDoneEventHandler(this as ListPage);
+                            this.Config.Plug.OnListPageDoneEventHandler(this as ListPage, snifferManager.Context);
                     }
 
                     //触发父页 PageDone

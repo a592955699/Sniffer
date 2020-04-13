@@ -71,5 +71,14 @@ namespace Sniffer.Core
             }
             return flag;
         }
+
+        /// <summary>
+        /// 获取带采集页面数
+        /// </summary>
+        /// <returns></returns>
+        public int GetWaitPageCount()
+        {
+            return WaitPages.Count;
+        }
     }
 }

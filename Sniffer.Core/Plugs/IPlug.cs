@@ -18,27 +18,27 @@ namespace Sniffer.Core.Plugs
         /// 根页面采集完毕
         /// </summary>
         /// <param name="page"></param>
-        void OnRootPageDoneEventHandler(PageBase page);
+        void OnRootPageDoneEventHandler(PageBase page, SnifferContext snifferContext);
         /// <summary>
         /// 列表的所有分页的url采集完毕
         /// </summary>
         /// <param name="page"></param>
-        void OnListUrlPageDoneEventHandler(ListPage page);
+        void OnListUrlPageDoneEventHandler(ListPage page, SnifferContext snifferContext);
         /// <summary>
         /// 详细页采集完毕
         /// 详细页内容有分页，需要所有内容都采集完毕，才执行
         /// <param name="page"></param>
         /// </summary>
-        void OnDetailPageDoneEventHandler(DetailPage page);
+        void OnDetailPageDoneEventHandler(DetailPage page, SnifferContext snifferContext);
         /// <summary>
         /// 表页采以及下面对应的详细页集完毕
         /// </summary>
         /// <param name="page"></param>
-        void OnListPageDoneEventHandler(ListPage page);
+        void OnListPageDoneEventHandler(ListPage page, SnifferContext snifferContext);
         /// <summary>
         /// 页面采集完毕
         /// </summary>
         /// <param name="page"></param>
-        void OnPageDoneEventHandler(PageBase page);
+        void OnPageDoneEventHandler(PageBase page, SnifferContext snifferContext);
     }
 }

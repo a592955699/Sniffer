@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium.Chrome;
+using Sniffer.Core;
 using Sniffer.Core.Models.Pages;
 using Sniffer.Core.Models.Sniffer.Pages;
 using Sniffer.Core.Plugs;
@@ -20,7 +21,7 @@ namespace Sniffer.Shop.Plugs
         {
             ShopConfig = ShopConfig.LoadConfig();
         }
-        public void OnDetailPageDoneEventHandler(DetailPage page)
+        public void OnDetailPageDoneEventHandler(DetailPage page, SnifferContext snifferContext)
         {
             String filePath = Path.Combine(ShopConfig.SavePath, fileName);
             String key, value;
@@ -34,19 +35,19 @@ namespace Sniffer.Shop.Plugs
             page.Body = "";
         }
 
-        public void OnListPageDoneEventHandler(ListPage page)
+        public void OnListPageDoneEventHandler(ListPage page, SnifferContext snifferContext)
         {
         }
 
-        public void OnListUrlPageDoneEventHandler(ListPage page)
+        public void OnListUrlPageDoneEventHandler(ListPage page, SnifferContext snifferContext)
         {
         }
 
-        public void OnPageDoneEventHandler(PageBase page)
+        public void OnPageDoneEventHandler(PageBase page, SnifferContext snifferContext)
         {
         }
 
-        public void OnRootPageDoneEventHandler(PageBase page)
+        public void OnRootPageDoneEventHandler(PageBase page, SnifferContext snifferContext)
         {
             String filePath = Path.Combine(ShopConfig.SavePath, fileName);
             List<string> urls = ReadFile(filePath);

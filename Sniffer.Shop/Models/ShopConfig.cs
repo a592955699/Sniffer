@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace Sniffer.Shop.Models
 {
@@ -14,17 +15,13 @@ namespace Sniffer.Shop.Models
 
         public static ShopConfig LoadConfig()
         {
-            //var builder = new ConfigurationBuilder()
-            //   .AddJsonFile(cfg =>
-            //   {
-            //       cfg.Path = "appsettings.json";
-            //       cfg.ReloadOnChange = true;
-            //       cfg.Optional = true;
-            //   });
             ShopConfig shopConfig = new ShopConfig();
             var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
             var configuration = builder.Build();
             configuration.GetSection("ShopConfig").Bind(shopConfig);
+
+            shopConfig.SavePath = Path.Combine(shopConfig.SavePath, DateTime.Now.ToString("yyyyMMdd_HH_mm_ss"));
+
             return shopConfig;
         }
     }

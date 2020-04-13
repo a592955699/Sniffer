@@ -16,25 +16,25 @@ namespace Sniffer.Core
         /// <summary>
         /// 顶级页面采集完毕
         /// </summary>
-        public Action<PageBase> OnRootPageDoneEventHandler { get; set; }
+        public Action<PageBase, SnifferContext> OnRootPageDoneEventHandler { get; set; }
         /// <summary>
         /// 列表的所有分页的url采集完毕
         /// </summary>
-        public Action<ListPage> OnListUrlPageDoneEventHandler { get; set; }
+        public Action<ListPage, SnifferContext> OnListUrlPageDoneEventHandler { get; set; }
         /// <summary>
         /// 详细页采集完毕
         /// 详细页内容有分页，需要所有内容都采集完毕，才执行
         /// </summary>
-        public Action<DetailPage> OnDetailPageDoneEventHandler { get; set; }
+        public Action<DetailPage, SnifferContext> OnDetailPageDoneEventHandler { get; set; }
         /// <summary>
         /// 表页采以及下面对应的详细页集完毕
         /// </summary>
-        public Action<ListPage> OnListPageDoneEventHandler { get; set; }
+        public Action<ListPage, SnifferContext> OnListPageDoneEventHandler { get; set; }
         /// <summary>
         /// 本页页面采集完毕
         /// 此功能不管子页面以及子页面状态
         /// </summary>
-        public Action<PageBase> OnPageDoneEventHandler { get; set; } 
+        public Action<PageBase, SnifferContext> OnPageDoneEventHandler { get; set; } 
         #endregion
 
         public SnifferManager(SnifferContext context)
@@ -81,9 +81,9 @@ namespace Sniffer.Core
                 ExcuteDetailPage(detailPage);
                 #endregion
             }
-            OnPageDoneEventHandler?.Invoke(page);
+            OnPageDoneEventHandler?.Invoke(page, Context);
             if (page.Config.Plug != null)
-                page.Config.Plug.OnPageDoneEventHandler(page);
+                page.Config.Plug.OnPageDoneEventHandler(page, Context);
         }
         /// <summary>
         /// 列表页处理逻辑
@@ -113,9 +113,9 @@ namespace Sniffer.Core
 
                 //触发列表页的所有Url采集完毕事件
                 if (OnListUrlPageDoneEventHandler != null)
-                    OnListUrlPageDoneEventHandler(listPage);
+                    OnListUrlPageDoneEventHandler(listPage, Context);
                 if (listPage.Config.Plug != null)
-                    listPage.Config.Plug.OnListUrlPageDoneEventHandler(listPage);
+                    listPage.Config.Plug.OnListUrlPageDoneEventHandler(listPage, Context);
             }
             catch (Exception ex)
             {

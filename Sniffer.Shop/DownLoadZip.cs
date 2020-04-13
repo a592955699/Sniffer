@@ -25,21 +25,38 @@ namespace Sniffer.Shop
         {
             if (Login())
             {
+                if(!System.IO.Directory.Exists(ShopConfig.SavePath))
+                {
+                    System.IO.Directory.CreateDirectory(ShopConfig.SavePath);
+                }
+
+                int count = urls.Count;
                 //请求Url获取 zip 包路径
                 foreach (var url in urls)
                 {
-                    String html = HttpHelper.DoGet(url, cookieContainer);
-                    var urlModel = JsonConvert.DeserializeObject<UrlModel>(html);
-                    if (urlModel.code == 0 && urlModel.data != null && !String.IsNullOrWhiteSpace(urlModel.data.url))
+                    try
                     {
-                        Console.WriteLine($"文件准备下载 {urlModel.data.url}");
-                        //下载 zip 包
-                        HttpHelper.DownloadFile(urlModel.data.url, ShopConfig.SavePath, true);
-                        Console.WriteLine($"文件下载完毕 {urlModel.data.url}");
+                        String html = HttpHelper.DoGet(url, cookieContainer);
+                        var urlModel = JsonConvert.DeserializeObject<UrlModel>(html);
+                        if (urlModel.code == 0 && urlModel.data != null && !String.IsNullOrWhiteSpace(urlModel.data.url))
+                        {
+                            Console.WriteLine($"文件准备下载 {urlModel.data.url}");
+                            //下载 zip 包
+                            HttpHelper.DownloadFile(urlModel.data.url, ShopConfig.SavePath, true);
+                            Console.WriteLine($"文件下载完毕 {urlModel.data.url}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{url} 返回:\r\n {html}");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        Console.WriteLine($"{url} 返回:\r\n {html}");
+                        Console.WriteLine(ex.ToString());
+                    }
+                    finally
+                    {
+                        Console.WriteLine($"待采集文件:{--count}");
                     }
                 }
             }
